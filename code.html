@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website edukasi interaktif untuk memahami fungsi komposisi melalui simulasi, langkah penyelesaian, dan grafik Plotly.">
+  <title>Functiona - Fungsi Komposisi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@500;600&family=Hanken+Grotesk:wght@600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="vendor/plotly-2.35.2.min.js"></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true">
+    <div class="ambient-plane ambient-plane-a parallax-item" data-depth="0.08"></div>
+    <div class="ambient-plane ambient-plane-b parallax-item" data-depth="-0.05"></div>
+    <span class="ambient-symbol symbol-a parallax-item" data-depth="0.16">f(x)</span>
+    <span class="ambient-symbol symbol-b parallax-item" data-depth="-0.12">g(x)</span>
+    <span class="ambient-symbol symbol-c parallax-item" data-depth="0.1">f(g(x))</span>
+    <span class="ambient-symbol symbol-d parallax-item" data-depth="-0.08">&sum;</span>
+  </div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="FungsiKomposisi beranda">Functiona</a>
+      <nav class="primary-nav" aria-label="Navigasi utama">
+        <a class="nav-link active" href="#materi">Materi</a>
+        <a class="nav-link" href="#simulasi">Simulasi</a>
+        <a class="nav-link" href="#latihan">Latihan</a>
+        <a class="nav-link" href="#grafik">Grafik</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-button" id="theme-toggle" type="button" aria-label="Aktifkan mode gelap" aria-pressed="false">
+          <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
+        </button>
+        <a class="button button-small button-primary header-cta" href="#simulasi">
+          <span>Mulai Belajar</span>
+          <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal-section">
+        <div class="eyebrow">
+          <span class="eyebrow-dot" aria-hidden="true"></span>
+          <span>Matematika Lanjut</span>
+        </div>
+        <h1>Memahami <span>Fungsi Komposisi</span></h1>
+        <p>
+          Eksplorasi konsep fungsi berlapis melalui visualisasi modern, simulasi yang responsif,
+          dan penyelesaian aljabar yang mudah diikuti.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#materi">
+            <span>Mulai Belajar</span>
+            <span class="material-symbols-outlined" aria-hidden="true">school</span>
+          </a>
+          <a class="button button-secondary" href="#grafik">
+            <span>Lihat Grafik</span>
+            <span class="material-symbols-outlined" aria-hidden="true">monitoring</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal-section" aria-label="Ilustrasi fungsi komposisi">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="composition-stage glass-card">
+          <div class="stage-ribbon">
+            <span class="math-token">f &compfn; g</span>
+            <span class="stage-status">interaktif</span>
+          </div>
+          <div class="composition-flow">
+            <div class="function-node node-input">
+              <span class="node-label">input</span>
+              <code>x</code>
+            </div>
+            <span class="flow-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            <div class="function-node node-g">
+              <span class="node-label">inner</span>
+              <code>g(x)</code>
+            </div>
+            <span class="flow-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+            <div class="function-node node-fog">
+              <span class="node-label">output</span>
+              <code>f(g(x))</code>
+            </div>
+          </div>
+          <div class="floating-equations" aria-hidden="true">
+            <span class="float-eq eq-one">x &mapsto; g(x)</span>
+            <span class="float-eq eq-two">f(g(x))</span>
+            <span class="float-eq eq-three">domain</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell reveal-section" id="materi">
+      <div class="section-heading">
+        <p class="section-kicker">Konsep Dasar</p>
+        <h2>Apa itu Fungsi Komposisi?</h2>
+        <p>
+          Fungsi komposisi adalah penggabungan operasi dua fungsi secara berurutan yang menghasilkan
+          fungsi baru. Anggap satu fungsi bekerja sebagai masukan bagi fungsi berikutnya.
+        </p>
+      </div>
+
+      <div class="concept-flow glass-card">
+        <div class="concept-gradient" aria-hidden="true"></div>
+        <div class="concept-item">
+          <div class="concept-box input-box"><code>x</code></div>
+          <span>Input Awal</span>
+        </div>
+        <span class="concept-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div class="concept-item">
+          <div class="concept-box g-box"><code>g(x)</code></div>
+          <span>Fungsi Pertama</span>
+        </div>
+        <span class="concept-arrow material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+        <div class="concept-item">
+          <div class="concept-box fog-box"><code>f(g(x))</code></div>
+          <span>Hasil Komposisi <code>(f &compfn; g)(x)</code></span>
+        </div>
+      </div>
+
+      <div class="accordion-section">
+        <h3 class="accordion-title">Pelajari Lebih Dalam</h3>
+        <div class="accordion-grid">
+          <article class="accordion-card glass-card">
+            <button class="accordion-trigger" type="button" aria-expanded="false">
+              <span class="accordion-icon material-symbols-outlined">functions</span>
+              <div class="accordion-header-text">
+                <h4>Notasi Fungsi Komposisi</h4>
+                <p>Cara penulisan yang benar</p>
+              </div>
+              <span class="accordion-chevron material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="accordion-content" hidden>
+              <p>Fungsi komposisi ditulis sebagai <code class="math-inline">(f ∘ g)(x)</code> atau <code class="math-inline">f(g(x))</code>.</p>
+              <p><strong>Urutan penting:</strong> Baca dari kanan ke kiri. Fungsi <code class="math-inline">g</code> dikerjakan terlebih dahulu, kemudian hasilnya menjadi input untuk fungsi <code class="math-inline">f</code>.</p>
+              <p><strong>Contoh:</strong> Jika <code class="math-inline">f(x) = 2x</code> dan <code class="math-inline">g(x) = x + 3</code>, maka <code class="math-inline">f(g(x)) = 2(x + 3) = 2x + 6</code>.</p>
+            </div>
+          </article>
+
+          <article class="accordion-card glass-card">
+            <button class="accordion-trigger" type="button" aria-expanded="false">
+              <span class="accordion-icon material-symbols-outlined">swap_horiz</span>
+              <div class="accordion-header-text">
+                <h4>Sifat Komutatif</h4>
+                <p>Apakah urutan berpengaruh?</p>
+              </div>
+              <span class="accordion-chevron material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="accordion-content" hidden>
+              <p><strong>Fungsi komposisi TIDAK komutatif.</strong> Artinya, <code class="math-inline">f(g(x)) ≠ g(f(x))</code> dalam kebanyakan kasus.</p>
+              <p><strong>Contoh:</strong></p>
+              <ul>
+                <li><code class="math-inline">f(x) = x²</code>, <code class="math-inline">g(x) = x + 1</code></li>
+                <li><code class="math-inline">f(g(x)) = (x + 1)² = x² + 2x + 1</code></li>
+                <li><code class="math-inline">g(f(x)) = x² + 1</code></li>
+              </ul>
+              <p>Hasilnya berbeda! Urutan sangat penting dalam komposisi fungsi.</p>
+            </div>
+          </article>
+
+          <article class="accordion-card glass-card">
+            <button class="accordion-trigger" type="button" aria-expanded="false">
+              <span class="accordion-icon material-symbols-outlined">domain</span>
+              <div class="accordion-header-text">
+                <h4>Domain dan Range</h4>
+                <p>Batasan nilai yang valid</p>
+              </div>
+              <span class="accordion-chevron material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="accordion-content" hidden>
+              <p><strong>Domain</strong> dari <code class="math-inline">f(g(x))</code> adalah semua nilai <code class="math-inline">x</code> yang memenuhi:</p>
+              <ol>
+                <li><code class="math-inline">x</code> ada di domain <code class="math-inline">g(x)</code></li>
+                <li><code class="math-inline">g(x)</code> ada di domain <code class="math-inline">f(x)</code></li>
+              </ol>
+              <p><strong>Contoh:</strong> Jika <code class="math-inline">f(x) = √x</code> dan <code class="math-inline">g(x) = x - 5</code>, maka domain <code class="math-inline">f(g(x))</code> adalah <code class="math-inline">x ≥ 5</code> karena <code class="math-inline">x - 5 ≥ 0</code>.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell simulator-section reveal-section" id="simulasi">
+      <div class="simulator-copy">
+        <p class="section-kicker">Simulator</p>
+        <h2>Uji Fungsi Secara Langsung</h2>
+        <p>
+          Masukkan ekspresi untuk <code class="math-inline">f(x)</code> dan <code class="math-inline">g(x)</code>.
+          Gunakan <code class="math-inline">x</code> sebagai variabel, misalnya <code class="math-inline">2x + 3</code>,
+          <code class="math-inline">x^2</code>, atau <code class="math-inline">sqrt(x + 4)</code>.
+        </p>
+        
+        <div class="preset-buttons">
+          <p class="preset-label">Coba Contoh Cepat:</p>
+          <div class="preset-grid">
+            <button class="preset-btn" type="button" data-preset="linear">
+              <span class="material-symbols-outlined">show_chart</span>
+              <span>Linear</span>
+            </button>
+            <button class="preset-btn" type="button" data-preset="quadratic">
+              <span class="material-symbols-outlined">insights</span>
+              <span>Kuadrat</span>
+            </button>
+            <button class="preset-btn" type="button" data-preset="trigonometric">
+              <span class="material-symbols-outlined">waves</span>
+              <span>Trigonometri</span>
+            </button>
+            <button class="preset-btn" type="button" data-preset="exponential">
+              <span class="material-symbols-outlined">trending_up</span>
+              <span>Eksponensial</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="simulator-panel glass-card">
+        <form class="simulator-form" id="composition-form" novalidate>
+          <div class="field-grid">
+            <label class="input-group" for="func-f">
+              <span>Fungsi <code>f(x)</code></span>
+              <span class="input-shell">
+                <span class="input-prefix">f(x) =</span>
+                <input id="func-f" name="func-f" type="text" value="2x + 3" autocomplete="off" spellcheck="false">
+              </span>
+            </label>
+
+            <label class="input-group" for="func-g">
+              <span>Fungsi <code>g(x)</code></span>
+              <span class="input-shell">
+                <span class="input-prefix">g(x) =</span>
+                <input id="func-g" name="func-g" type="text" value="x^2" autocomplete="off" spellcheck="false">
+              </span>
+            </label>
+
+            <label class="input-group input-group-x" for="eval-x">
+              <span>Nilai uji <code>x</code></span>
+              <span class="input-shell compact">
+                <span class="input-prefix">x =</span>
+                <input id="eval-x" name="eval-x" type="number" value="2" step="0.5">
+              </span>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <p class="validation-message" id="validation-message" role="alert" aria-live="polite"></p>
+            <button class="button button-primary calculate-button" id="btn-hitung" type="submit">
+              <span>Hitung Komposisi</span>
+              <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="results-panel" aria-live="polite">
+          <div class="empty-state" id="empty-state">
+            <div class="empty-state-icon">
+              <span class="material-symbols-outlined">calculate</span>
+            </div>
+            <h4>Siap untuk Menghitung</h4>
+            <p>Masukkan fungsi f(x) dan g(x), lalu tekan tombol hitung untuk melihat hasil komposisi fungsi.</p>
+            <div class="empty-state-hints">
+              <div class="hint-item">
+                <span class="material-symbols-outlined">lightbulb</span>
+                <span>Gunakan <code>x</code> sebagai variabel</span>
+              </div>
+              <div class="hint-item">
+                <span class="material-symbols-outlined">functions</span>
+                <span>Contoh: <code>2x + 3</code>, <code>x^2</code>, <code>sin(x)</code></span>
+              </div>
+            </div>
+          </div>
+          <div class="results-content" id="results-content" hidden>
+            <div class="panel-header">
+              <span>Hasil Substitusi</span>
+              <span class="result-badge">live</span>
+            </div>
+            <div class="result-list">
+              <article class="result-row result-primary" data-result-card>
+                <div>
+                  <span class="result-label"><code>(f &compfn; g)(x)</code> = <code>f(g(x))</code></span>
+                  <code class="result-expression" id="result-fog">2(x^2) + 3</code>
+                </div>
+                <strong class="result-value" id="value-fog">11</strong>
+              </article>
+              <article class="result-row result-secondary" data-result-card>
+                <div>
+                  <span class="result-label"><code>(g &compfn; f)(x)</code> = <code>g(f(x))</code></span>
+                  <code class="result-expression" id="result-gof">(2x + 3)^2</code>
+                </div>
+                <strong class="result-value" id="value-gof">49</strong>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell reveal-section" id="latihan">
+      <div class="section-heading">
+        <p class="section-kicker">Penyelesaian</p>
+        <h2>Langkah-demi-Langkah</h2>
+        <p>
+          Susunan berikut diperbarui dari input simulator agar proses <code class="math-inline">(f &compfn; g)(x)</code>
+          tetap mudah dibaca.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <article class="step-card glass-card">
+          <div class="step-number">1</div>
+          <h3>Tentukan fungsi</h3>
+          <p id="step-define">Gunakan f(x) = 2x + 3 dan g(x) = x^2.</p>
+        </article>
+        <article class="step-card glass-card">
+          <div class="step-number">2</div>
+          <h3>Substitusi fungsi dalam</h3>
+          <p id="step-substitute">Ganti setiap x pada f(x) dengan g(x), sehingga f(g(x)) = 2(x^2) + 3.</p>
+        </article>
+        <article class="step-card glass-card">
+          <div class="step-number">3</div>
+          <h3>Evaluasi nilai</h3>
+          <p id="step-evaluate">Saat x = 2, g(x) = 4 dan f(g(x)) = 11.</p>
+        </article>
+      </div>
+
+      <div class="interactive-examples">
+        <h3 class="examples-title">Contoh Interaktif</h3>
+        <div class="examples-grid">
+          <article class="example-card glass-card">
+            <div class="example-header">
+              <span class="example-badge">Contoh 1</span>
+              <h4>Fungsi Linear</h4>
+            </div>
+            <div class="example-functions">
+              <code>f(x) = 3x - 2</code>
+              <code>g(x) = x + 5</code>
+            </div>
+            <button class="example-expand" type="button" aria-expanded="false">
+              <span>Lihat Penyelesaian</span>
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="example-solution" hidden>
+              <div class="solution-step">
+                <span class="step-label">Langkah 1:</span>
+                <p>Substitusi g(x) ke dalam f(x)</p>
+                <code class="solution-code">f(g(x)) = 3(x + 5) - 2</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Langkah 2:</span>
+                <p>Sederhanakan ekspresi</p>
+                <code class="solution-code">= 3x + 15 - 2</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Hasil Akhir:</span>
+                <code class="solution-code highlight">f(g(x)) = 3x + 13</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Verifikasi dengan x = 2:</span>
+                <p>g(2) = 7, f(7) = 19 ✓</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="example-card glass-card">
+            <div class="example-header">
+              <span class="example-badge">Contoh 2</span>
+              <h4>Fungsi Kuadrat</h4>
+            </div>
+            <div class="example-functions">
+              <code>f(x) = x² + 1</code>
+              <code>g(x) = 2x - 3</code>
+            </div>
+            <button class="example-expand" type="button" aria-expanded="false">
+              <span>Lihat Penyelesaian</span>
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="example-solution" hidden>
+              <div class="solution-step">
+                <span class="step-label">Langkah 1:</span>
+                <p>Substitusi g(x) ke dalam f(x)</p>
+                <code class="solution-code">f(g(x)) = (2x - 3)² + 1</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Langkah 2:</span>
+                <p>Ekspansi kuadrat</p>
+                <code class="solution-code">= 4x² - 12x + 9 + 1</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Hasil Akhir:</span>
+                <code class="solution-code highlight">f(g(x)) = 4x² - 12x + 10</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Verifikasi dengan x = 1:</span>
+                <p>g(1) = -1, f(-1) = 2 ✓</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="example-card glass-card">
+            <div class="example-header">
+              <span class="example-badge">Contoh 3</span>
+              <h4>Fungsi Akar</h4>
+            </div>
+            <div class="example-functions">
+              <code>f(x) = √x</code>
+              <code>g(x) = x² + 4</code>
+            </div>
+            <button class="example-expand" type="button" aria-expanded="false">
+              <span>Lihat Penyelesaian</span>
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="example-solution" hidden>
+              <div class="solution-step">
+                <span class="step-label">Langkah 1:</span>
+                <p>Substitusi g(x) ke dalam f(x)</p>
+                <code class="solution-code">f(g(x)) = √(x² + 4)</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Analisis Domain:</span>
+                <p>Karena x² + 4 selalu positif, domain adalah semua bilangan real</p>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Hasil Akhir:</span>
+                <code class="solution-code highlight">f(g(x)) = √(x² + 4)</code>
+              </div>
+              <div class="solution-step">
+                <span class="step-label">Verifikasi dengan x = 0:</span>
+                <p>g(0) = 4, f(4) = 2 ✓</p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="mistakes-section">
+        <h3 class="mistakes-title">
+          <span class="material-symbols-outlined">warning</span>
+          Kesalahan Umum yang Harus Dihindari
+        </h3>
+        <div class="mistakes-grid">
+          <article class="mistake-card glass-card">
+            <div class="mistake-icon">
+              <span class="material-symbols-outlined">close</span>
+            </div>
+            <h4>Salah Urutan Komposisi</h4>
+            <div class="mistake-example">
+              <p class="mistake-wrong"><strong>Salah:</strong> Menganggap f(g(x)) = g(f(x))</p>
+              <p class="mistake-right"><strong>Benar:</strong> f(g(x)) ≠ g(f(x)) dalam kebanyakan kasus</p>
+            </div>
+            <p class="mistake-explanation">Urutan komposisi sangat penting. Fungsi yang lebih dalam (di dalam kurung) dikerjakan terlebih dahulu.</p>
+          </article>
+
+          <article class="mistake-card glass-card">
+            <div class="mistake-icon">
+              <span class="material-symbols-outlined">close</span>
+            </div>
+            <h4>Lupa Mengganti Semua x</h4>
+            <div class="mistake-example">
+              <p class="mistake-wrong"><strong>Salah:</strong> f(g(x)) = 2x + g(x) jika f(x) = 2x + x</p>
+              <p class="mistake-right"><strong>Benar:</strong> f(g(x)) = 2g(x) + g(x) = 3g(x)</p>
+            </div>
+            <p class="mistake-explanation">Setiap kemunculan variabel x dalam f(x) harus diganti dengan g(x) secara lengkap.</p>
+          </article>
+
+          <article class="mistake-card glass-card">
+            <div class="mistake-icon">
+              <span class="material-symbols-outlined">close</span>
+            </div>
+            <h4>Mengabaikan Tanda Kurung</h4>
+            <div class="mistake-example">
+              <p class="mistake-wrong"><strong>Salah:</strong> Jika g(x) = x + 1, maka g(x)² = x + 1²</p>
+              <p class="mistake-right"><strong>Benar:</strong> g(x)² = (x + 1)²</p>
+            </div>
+            <p class="mistake-explanation">Selalu gunakan tanda kurung saat mensubstitusi fungsi untuk menghindari kesalahan operasi.</p>
+          </article>
+
+          <article class="mistake-card glass-card">
+            <div class="mistake-icon">
+              <span class="material-symbols-outlined">close</span>
+            </div>
+            <h4>Salah Menghitung Domain</h4>
+            <div class="mistake-example">
+              <p class="mistake-wrong"><strong>Salah:</strong> Domain f(g(x)) = domain f(x)</p>
+              <p class="mistake-right"><strong>Benar:</strong> Periksa domain g(x) DAN pastikan g(x) ada di domain f</p>
+            </div>
+            <p class="mistake-explanation">Domain komposisi harus memenuhi syarat kedua fungsi, bukan hanya fungsi luar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell reveal-section" id="grafik">
+      <div class="chart-panel glass-card">
+        <div class="chart-heading">
+          <div>
+            <p class="section-kicker">Visualisasi</p>
+            <h2>Grafik Interaktif</h2>
+          </div>
+          <div class="chart-legend-note">
+            <span class="legend-dot dot-f"></span><code>f(x)</code>
+            <span class="legend-dot dot-g"></span><code>g(x)</code>
+            <span class="legend-dot dot-fog"></span><code>f(g(x))</code>
+          </div>
+        </div>
+        <div class="plot-wrap">
+          <div id="plot" class="plotly-chart" role="img" aria-label="Grafik f(x), g(x), dan f(g(x))"></div>
+          <div class="plot-loading" id="plot-loading" aria-hidden="true">
+            <span class="loading-orbit"></span>
+            <span>Memuat grafik</span>
+          </div>
+          <p class="plot-status" id="plot-status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="flow-visualization">
+        <h3 class="flow-title">Visualisasi Alur Fungsi</h3>
+        <p class="flow-description">Lihat bagaimana nilai mengalir melalui komposisi fungsi</p>
+        <div class="flow-container glass-card">
+          <div class="flow-stage">
+            <div class="flow-node flow-input">
+              <span class="flow-node-label">Input</span>
+              <code class="flow-value" id="flow-input-value">x = 2</code>
+            </div>
+            <div class="flow-arrow-animated">
+              <span class="material-symbols-outlined">arrow_forward</span>
+              <div class="flow-arrow-trail"></div>
+            </div>
+            <div class="flow-node flow-g">
+              <span class="flow-node-label">g(x)</span>
+              <code class="flow-value" id="flow-g-value">x² = 4</code>
+            </div>
+            <div class="flow-arrow-animated">
+              <span class="material-symbols-outlined">arrow_forward</span>
+              <div class="flow-arrow-trail"></div>
+            </div>
+            <div class="flow-node flow-f">
+              <span class="flow-node-label">f(g(x))</span>
+              <code class="flow-value" id="flow-f-value">2(4) + 3 = 11</code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell applications-section reveal-section">
+      <div class="section-heading">
+        <p class="section-kicker">Penerapan</p>
+        <h2>Fungsi Komposisi di Dunia Nyata</h2>
+        <p>Konsep ini tidak hanya teori — fungsi komposisi digunakan dalam berbagai bidang teknologi dan sains.</p>
+      </div>
+
+      <div class="applications-grid">
+        <article class="application-card glass-card">
+          <div class="application-icon">
+            <span class="material-symbols-outlined">computer</span>
+          </div>
+          <h4>Grafik Komputer</h4>
+          <p>Transformasi objek 3D menggunakan komposisi fungsi untuk rotasi, translasi, dan scaling. Setiap transformasi adalah fungsi yang dikomposisikan secara berurutan.</p>
+          <div class="application-example">
+            <code>Transform(Rotate(Scale(object)))</code>
+          </div>
+        </article>
+
+        <article class="application-card glass-card">
+          <div class="application-icon">
+            <span class="material-symbols-outlined">psychology</span>
+          </div>
+          <h4>Machine Learning</h4>
+          <p>Neural networks adalah komposisi fungsi berlapis. Setiap layer menerapkan fungsi aktivasi pada output layer sebelumnya.</p>
+          <div class="application-example">
+            <code>σ(W₃·σ(W₂·σ(W₁·x)))</code>
+          </div>
+        </article>
+
+        <article class="application-card glass-card">
+          <div class="application-icon">
+            <span class="material-symbols-outlined">transform</span>
+          </div>
+          <h4>Transformasi Data</h4>
+          <p>Pipeline pemrosesan data menggunakan komposisi fungsi untuk membersihkan, mengubah, dan menganalisis data secara bertahap.</p>
+          <div class="application-example">
+            <code>analyze(filter(normalize(data)))</code>
+          </div>
+        </article>
+
+        <article class="application-card glass-card">
+          <div class="application-icon">
+            <span class="material-symbols-outlined">encrypted</span>
+          </div>
+          <h4>Kriptografi</h4>
+          <p>Algoritma enkripsi menerapkan beberapa fungsi transformasi secara berurutan untuk mengamankan data.</p>
+          <div class="application-example">
+            <code>encrypt₃(encrypt₂(encrypt₁(message)))</code>
+          </div>
+        </article>
+
+        <article class="application-card glass-card">
+          <div class="application-icon">
+            <span class="material-symbols-outlined">photo_filter</span>
+          </div>
+          <h4>Image Processing</h4>
+          <p>Filter gambar diterapkan secara berlapis — brightness, contrast, blur — masing-masing adalah fungsi yang dikomposisikan.</p>
+          <div class="application-example">
+            <code>blur(contrast(brightness(image)))</code>
+          </div>
+        </article>
+
+        <article class="application-card glass-card">
+          <div class="application-icon">
+            <span class="material-symbols-outlined">functions</span>
+          </div>
+          <h4>Functional Programming</h4>
+          <p>Paradigma pemrograman yang menggunakan komposisi fungsi sebagai konsep inti untuk membangun program yang modular.</p>
+          <div class="application-example">
+            <code>compose(map, filter, reduce)</code>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-inner">
+        <div class="footer-brand-section">
+          <a class="brand footer-brand" href="#top">Functiona</a>
+          <p class="footer-tagline">Platform edukasi matematika modern yang menghadirkan pembelajaran interaktif melalui visualisasi intuitif dan simulasi real-time.</p>
+          <div class="footer-badge">
+            <span class="material-symbols-outlined">verified</span>
+            <span>Educational Platform</span>
+          </div>
+        </div>
+        
+        <div class="footer-links-wrapper">
+          <div class="footer-links-section">
+            <h4 class="footer-section-title">Navigasi</h4>
+            <nav class="footer-nav" aria-label="Navigasi footer">
+              <a href="#materi" class="footer-link">
+                <span class="material-symbols-outlined">menu_book</span>
+                <span>Materi</span>
+              </a>
+              <a href="#simulasi" class="footer-link">
+                <span class="material-symbols-outlined">science</span>
+                <span>Simulasi</span>
+              </a>
+              <a href="#latihan" class="footer-link">
+                <span class="material-symbols-outlined">edit_note</span>
+                <span>Latihan</span>
+              </a>
+              <a href="#grafik" class="footer-link">
+                <span class="material-symbols-outlined">monitoring</span>
+                <span>Grafik</span>
+              </a>
+            </nav>
+          </div>
+          
+          <div class="footer-info-section">
+            <h4 class="footer-section-title">Kontak</h4>
+            <div class="footer-info">
+              <div class="creator-info">
+                <p class="creator-name">Raihan Galih Bintang Pratama</p>
+                <p class="creator-details">Kelas XI • SIJA 1 • 2026</p>
+              </div>
+              
+              <div class="social-links">
+                <a href="mailto:your.email@gmail.com" class="social-link" aria-label="Email" title="Email">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </a>
+                
+                <a href="https://instagram.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram" title="Instagram">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                  </svg>
+                </a>
+                
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub" title="GitHub">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/>
+                  </svg>
+                </a>
+                
+                <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp" title="WhatsApp">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                  </svg>
+                </a>
+                
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn" title="LinkedIn">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-divider"></div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Functiona. Proyek Semester Matematika.</p>
+        <div class="footer-bottom-links">
+          <a href="#top" class="footer-bottom-link">Kembali ke Atas</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
