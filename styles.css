@@ -527,10 +527,11 @@ code,
 
 /* Mobile Nav Header */
 .mobile-nav-header {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 24px;
+  padding: 18px 24px;
   border-bottom: 1px solid color-mix(in srgb, var(--outline-variant) 28%, transparent);
   background: color-mix(in srgb, var(--surface-container-lowest) 32%, transparent);
 }
@@ -569,18 +570,19 @@ code,
 
 /* Mobile Nav Content */
 .mobile-nav-content {
-  flex: 1;
-  padding: 16px;
+  flex: 0 0 auto;
+  padding: 12px 16px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+  overflow: visible;
 }
 
 .mobile-nav-link {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 16px 18px;
+  padding: 14px 18px;
   border-radius: 14px;
   color: var(--on-surface);
   font-size: 1rem;
@@ -661,7 +663,7 @@ code,
 /* Mobile Nav Divider */
 .mobile-nav-divider {
   height: 1px;
-  margin: 12px 0;
+  margin: 8px 0;
   background: linear-gradient(
     90deg,
     transparent,
@@ -671,9 +673,16 @@ code,
   );
 }
 
+/* Mobile Nav Spacer - pushes footer to bottom */
+.mobile-nav-spacer {
+  flex: 1 1 auto;
+  min-height: 20px;
+}
+
 /* Mobile Nav Footer */
 .mobile-nav-footer {
-  padding: 20px 24px;
+  flex: 0 0 auto;
+  padding: 18px 24px;
   border-top: 1px solid color-mix(in srgb, var(--outline-variant) 28%, transparent);
   background: color-mix(in srgb, var(--surface-container-lowest) 32%, transparent);
 }
@@ -734,20 +743,25 @@ code,
   }
   
   .mobile-nav-header {
-    padding: 18px 20px;
+    padding: 16px 20px;
   }
   
   .mobile-nav-content {
-    padding: 14px;
+    padding: 10px 14px;
+    gap: 3px;
   }
   
   .mobile-nav-link {
-    padding: 14px 16px;
+    padding: 12px 16px;
     font-size: 0.95rem;
   }
   
   .mobile-nav-icon {
     font-size: 1.3rem;
+  }
+  
+  .mobile-nav-footer {
+    padding: 16px 20px;
   }
 }
 
@@ -759,6 +773,34 @@ code,
   .mobile-nav-inner {
     border-left: none;
   }
+  
+  .mobile-nav-header {
+    padding: 14px 18px;
+  }
+  
+  .mobile-nav-content {
+    padding: 8px 12px;
+    gap: 2px;
+  }
+  
+  .mobile-nav-link {
+    padding: 11px 14px;
+    font-size: 0.92rem;
+    gap: 12px;
+  }
+  
+  .mobile-nav-icon {
+    font-size: 1.25rem;
+  }
+  
+  .mobile-nav-footer {
+    padding: 14px 18px;
+  }
+  
+  .mobile-nav-footer-text {
+    font-size: 0.78rem;
+  }
+}
 }
 
 /* ============================================
