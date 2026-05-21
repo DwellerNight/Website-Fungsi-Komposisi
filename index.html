@@ -41,8 +41,74 @@
           <span>Mulai Belajar</span>
           <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
         </a>
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger-icon">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
+        </button>
       </div>
     </div>
+    
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+      <div class="mobile-nav-inner">
+        <div class="mobile-nav-header">
+          <span class="mobile-nav-title">Menu</span>
+          <button class="mobile-nav-close" id="mobile-nav-close" type="button" aria-label="Close menu">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        
+        <div class="mobile-nav-content">
+          <a class="mobile-nav-link" href="#top" data-mobile-link>
+            <span class="mobile-nav-icon material-symbols-outlined">home</span>
+            <span class="mobile-nav-text">Home</span>
+            <span class="mobile-nav-arrow material-symbols-outlined">arrow_forward</span>
+          </a>
+          
+          <a class="mobile-nav-link" href="#materi" data-mobile-link>
+            <span class="mobile-nav-icon material-symbols-outlined">menu_book</span>
+            <span class="mobile-nav-text">Materi</span>
+            <span class="mobile-nav-arrow material-symbols-outlined">arrow_forward</span>
+          </a>
+          
+          <a class="mobile-nav-link" href="#simulasi" data-mobile-link>
+            <span class="mobile-nav-icon material-symbols-outlined">science</span>
+            <span class="mobile-nav-text">Simulasi</span>
+            <span class="mobile-nav-arrow material-symbols-outlined">arrow_forward</span>
+          </a>
+          
+          <a class="mobile-nav-link" href="#latihan" data-mobile-link>
+            <span class="mobile-nav-icon material-symbols-outlined">edit_note</span>
+            <span class="mobile-nav-text">Latihan</span>
+            <span class="mobile-nav-arrow material-symbols-outlined">arrow_forward</span>
+          </a>
+          
+          <a class="mobile-nav-link" href="#grafik" data-mobile-link>
+            <span class="mobile-nav-icon material-symbols-outlined">monitoring</span>
+            <span class="mobile-nav-text">Grafik</span>
+            <span class="mobile-nav-arrow material-symbols-outlined">arrow_forward</span>
+          </a>
+          
+          <div class="mobile-nav-divider"></div>
+          
+          <a class="mobile-nav-link mobile-nav-link-secondary" href="#footer" data-mobile-link>
+            <span class="mobile-nav-icon material-symbols-outlined">contact_mail</span>
+            <span class="mobile-nav-text">Kontak</span>
+            <span class="mobile-nav-arrow material-symbols-outlined">arrow_forward</span>
+          </a>
+        </div>
+        
+        <div class="mobile-nav-footer">
+          <p class="mobile-nav-footer-text">Functiona - Platform Edukasi Matematika</p>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
   </header>
 
   <main id="top">
@@ -629,7 +695,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
+  <footer class="site-footer" id="footer">
     <div class="footer-container">
       <div class="footer-inner">
         <div class="footer-brand-section">
