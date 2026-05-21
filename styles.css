@@ -493,7 +493,7 @@ code,
   position: fixed;
   top: 0;
   right: 0;
-  bottom: 0;
+  bottom: auto;
   width: min(340px, 85vw);
   z-index: 1000;
   pointer-events: none;
@@ -502,6 +502,24 @@ code,
   transition: 
     transform var(--transition-smooth),
     opacity var(--transition-smooth);
+}
+
+/* Custom scrollbar for mobile nav (if needed on very small screens) */
+.mobile-nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mobile-nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-nav::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--outline-variant) 40%, transparent);
+  border-radius: 3px;
+}
+
+.mobile-nav::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in srgb, var(--outline-variant) 60%, transparent);
 }
 
 .mobile-nav.is-open {
@@ -513,16 +531,17 @@ code,
 .mobile-nav-inner {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
+  min-height: auto;
   border-left: 1px solid var(--glass-border);
   background: var(--glass-strong);
-  backdrop-filter: var(--blur-medium) saturate(1.15);
+  backdrop-filter: var(--blur) saturate(1.15);
   -webkit-backdrop-filter: var(--blur-medium) saturate(1.15);
   box-shadow: 
     -8px 0 32px rgba(0, 88, 190, 0.12),
     inset 1px 0 0 var(--glass-inner);
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow-y: visible;
+  overscroll-behavior: none;
 }
 
 /* Mobile Nav Header */
@@ -676,7 +695,7 @@ code,
 /* Mobile Nav Spacer - pushes footer to bottom */
 .mobile-nav-spacer {
   flex: 1 1 auto;
-  min-height: 20px;
+  min-height: 0;
 }
 
 /* Mobile Nav Footer */
@@ -800,7 +819,6 @@ code,
   .mobile-nav-footer-text {
     font-size: 0.78rem;
   }
-}
 }
 
 /* ============================================
